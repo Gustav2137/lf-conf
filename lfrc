@@ -1,5 +1,5 @@
 # interpreter for shell commands
-set shell bash
+set shell zsh
 
 # set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
@@ -37,7 +37,7 @@ map O !xdg-open --ask $f
 # text files and a file opener for the rest.
 cmd open ${{
     case $(file --mime-type -Lb $f) in
-        text/*) $EDITOR $fx;;
+        text/*) neovide $fx;;
         */pdf|*/postscript|image/vnd.djvu) setsid -f zathura $fx >/dev/null 2>&1 ;;
         audio/*) ffplay -nodisp -hide_banner -autoexit $f;;
         video/*) ffplay -fs -hide_banner $f;;
